@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GMaps</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .input + .input {
+      margin-left: 15px;
+    }
+    input {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form">
+    <div class="input">
+      <input type="text" placeholder="country" class="js-country js-input">
+    </div>
+    <div class="input">
+      <input type="text" placeholder="city" class="js-city js-input">
+    </div>
+    <div class="input">
+      <input type="text" placeholder="address" class="js-address js-input">
+    </div>
+  </div>
+  <div class="map">
+    <iframe class="js-map" width="600" height="400" frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD0Sst7xfdf3NIyDK6-FE76xASY3LVojhs&q=Petrozavodsk" allowfullscreen>
+    </iframe>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script>
+    $('.js-input').on('blur', () => {
+      const query = $('.js-country').val() + ' ' + $('.js-city').val() + ' ' + $('.js-address').val();
+      const URL = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyD0Sst7xfdf3NIyDK6-FE76xASY3LVojhs&q=' + query;
+      $('.js-map').attr('src', URL);
+    });
+  </script>
+</body>
+</html>
